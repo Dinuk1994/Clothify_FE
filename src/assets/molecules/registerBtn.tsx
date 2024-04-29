@@ -7,7 +7,7 @@ interface registerBtnProps{
 const registerBtn: React.FC<registerBtnProps> = ({name}) => {
   return (
     <div >
-        <button className='rounded-3xl shadow-2xl w-52 text-3xl border-4 border-gray-300 font-serif text-white bg-btn-color p-4 hover:bg-emerald-700'>{name}</button>
+        <button className='rounded-2xl shadow-2xl w-40  text-xl border-4 border-gray-300 font-serif text-white bg-btn-color p-1 hover:bg-emerald-700'>{name}</button>
     </div>
   )
 }
