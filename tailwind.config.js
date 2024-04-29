@@ -7,7 +7,11 @@ export default {
   theme: {
     extend: {
       backgroundColor : {
-        'new-gray' : '#B9B7B7'
+        'new-gray' : '#B9B7B7',
+        'btn-color' : '#6BB287'
+      },
+      fontFamily: {
+        'heading': ['Pacifico', 'cursive']
       }
     },
   },
