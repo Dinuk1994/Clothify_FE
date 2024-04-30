@@ -4,6 +4,7 @@ import './App.css';
 
 import Login from './assets/(pages)/login/page';
 import Register from './assets/(pages)/register/page'
+import Home from './assets/(pages)/home/page'
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register/>} />
+        <Route path='/home' element={<Home/>}/>
       </Routes>
     </Router>
   );

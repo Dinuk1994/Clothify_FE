@@ -1,7 +1,7 @@
 import React from 'react'
-import RegisterImage from '../../../public/Register/RegisterImage.jpg'
+import RegisterImage from '../../../public/Register/pexels-yogendra-singh-1760900.jpg'
 import Logo from '../../../public/common/CLOTHIFI-removebg-preview.png'
-import RegisterContainer from '../organism/LoginPage/RegisterContainer'
+import RegisterContainer from '../organism/RegisterContainer'
 
 const Registertemplate = () => {
   return (

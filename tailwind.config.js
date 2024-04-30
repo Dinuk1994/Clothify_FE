@@ -8,10 +8,12 @@ export default {
     extend: {
       backgroundColor : {
         'new-gray' : '#B9B7B7',
-        'btn-color' : '#6BB287'
+        'btn-color' : '#6BB287',
+        'header-color' : '#6BB287'
       },
       fontFamily: {
-        'heading': ['Pacifico', 'cursive']
+        'heading': ['Pacifico', 'cursive'],
+        'baloo' : ['Baloo Bhaina 2', 'sans-serif']
       },
       screens: {
         'older-mobile': { 'raw': 'screen and (device-aspect-ratio: 40/71)' },

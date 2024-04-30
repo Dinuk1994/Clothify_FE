@@ -1,7 +1,7 @@
 import React from 'react'
 import LoginImage from '../../../public/Login/Login.jpg'
 import Logo from '../../../public/common/CLOTHIFI-removebg-preview.png'
-import LoginContainer from '../organism/LoginPage/LoginContainer'
+import LoginContainer from '../organism/LoginContainer'
 
 
 const LoginTemplate = () => {

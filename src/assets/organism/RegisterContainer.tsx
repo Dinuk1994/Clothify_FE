@@ -1,7 +1,7 @@
 import React from 'react'
-import Logo from '../../../../public/common/CLOTHIFI-removebg-preview.png'
-import Regbtn from '../../molecules/registerBtn'
-import GoogleImage from '../../../../public/Login/icons8-google-144.png'
+import Logo from '../../../public/common/CLOTHIFI-removebg-preview.png'
+import Regbtn from '../molecules/registerBtn'
+import GoogleImage from '../../../public/Login/icons8-google-144.png'
 
 const RegisterContainer = () => {
     return (
