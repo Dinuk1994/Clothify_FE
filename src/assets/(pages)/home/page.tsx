@@ -3,7 +3,7 @@ import HomeTemplate from '../../templates/HomeTemplate'
 
 const page = () => {
   return (
-    <div><HomeTemplate/></div>
+    <div ><HomeTemplate/></div>
   )
 }
 

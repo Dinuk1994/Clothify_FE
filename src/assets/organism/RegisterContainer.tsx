@@ -7,7 +7,7 @@ const RegisterContainer = () => {
     return (
         <div>
             <div className='mt-3 flex justify-center h-28 '>
-                <img src={Logo} alt="" />
+                <button><img src={Logo} alt="" /></button>
             </div>
             <div className='mt-3 flex justify-center'>
                 <label htmlFor="" className='text-5xl font-heading text-white tablet-or-mobile:3xl tablet-or-mobile:text-4xl' >Welcome to clothify!</label>
