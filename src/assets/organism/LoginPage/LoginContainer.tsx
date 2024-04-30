@@ -13,12 +13,12 @@ const LoginContainer = () => {
             <div className='mt-3 flex justify-center'>
                 <label htmlFor="" className='text-5xl font-heading text-white tablet-or-mobile:3xl tablet-or-mobile:text-4xl' >Welcome to clothify!</label>
             </div>
-            <div className=''>
-                <div className='mt-10'>
+            <div>
+                <div className='mt-16'>
                     <label htmlFor="" className='text-xl font-serif text-white font-semibold'>Username or email</label>
                 </div>
                 <div>
-                    <div className="relative h-16 w-full min-w-[150px]">
+                    <div className="relative h-10 w-full min-w-[150px]">
                         <input placeholder=""
                             className="peer h-full w-full text-lg border-b border-blue-gray-200 text-white bg-transparent font-sans  font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border-blue-gray-200 focus:border-gray-500 focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50 placeholder:opacity-0 focus:placeholder:opacity-100" />
                         <label
@@ -31,7 +31,7 @@ const LoginContainer = () => {
                     <label htmlFor="" className='text-xl font-serif text-white font-semibold'>Password</label>
                 </div>
                 <div>
-                    <div className="relative h-16 w-full min-w-[150px]">
+                    <div className="relative h-10 w-full min-w-[150px]">
                         <input type='password' placeholder=""
                             className="peer h-full w-full border-b border-blue-gray-200 bg-transparent text-white  pb-1 font-sans text-lg font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border-blue-gray-200 focus:border-gray-500 focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50 placeholder:opacity-0 focus:placeholder:opacity-100" />
                         <label
