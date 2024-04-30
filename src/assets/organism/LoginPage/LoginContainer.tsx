@@ -11,14 +11,14 @@ const LoginContainer = () => {
                 <img src={Logo} alt="" />
             </div>
             <div className='mt-3 flex justify-center'>
-                <label htmlFor="" className='text-5xl font-heading text-white tablet-or-mobile:3xl tablet-or-mobile:text-wrap' >Welcome to clothify!</label>
+                <label htmlFor="" className='text-5xl font-heading text-white tablet-or-mobile:3xl tablet-or-mobile:text-4xl' >Welcome to clothify!</label>
             </div>
             <div className=''>
                 <div className='mt-10'>
                     <label htmlFor="" className='text-xl font-serif text-white font-semibold'>Username or email</label>
                 </div>
                 <div>
-                    <div className="relative h-16 w-full min-w-[200px]">
+                    <div className="relative h-16 w-full min-w-[150px]">
                         <input placeholder=""
                             className="peer h-full w-full text-lg border-b border-blue-gray-200 text-white bg-transparent font-sans  font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border-blue-gray-200 focus:border-gray-500 focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50 placeholder:opacity-0 focus:placeholder:opacity-100" />
                         <label
@@ -31,7 +31,7 @@ const LoginContainer = () => {
                     <label htmlFor="" className='text-xl font-serif text-white font-semibold'>Password</label>
                 </div>
                 <div>
-                    <div className="relative h-16 w-full min-w-[200px]">
+                    <div className="relative h-16 w-full min-w-[150px]">
                         <input type='password' placeholder=""
                             className="peer h-full w-full border-b border-blue-gray-200 bg-transparent text-white  pb-1 font-sans text-lg font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border-blue-gray-200 focus:border-gray-500 focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50 placeholder:opacity-0 focus:placeholder:opacity-100" />
                         <label
@@ -43,17 +43,17 @@ const LoginContainer = () => {
             <div className='flex mt-1 justify-end'>
                 <button className='text-md font-serif text-white font-semibold'>Forgot password ?</button>
             </div>
-            <div className='flex justify-center mt-4'>
+            <div className='flex justify-center mt-8'>
                 <Regbtn name='Login' />
             </div>
-            <div className='mt-6 text-white justify-items-center text-md flex justify-center'>
+            <div className='mt-8 text-white justify-items-center text-md flex justify-center'>
                 <hr className="w-44" /> OR <hr className="w-44" />
             </div>
             <div className='flex justify-center mt-2 font-serif text-white'>
                 <button> <img src={GoogleImage} alt="" className='size-6 mt-1' /></button>
                 <label htmlFor="" className='flex justify-items-center mt-1 ml-3 text-xl'>Sign up with google</label>
             </div>
-            <div className='flex justify-center mt-3'>
+            <div className='flex justify-center mt-5'>
                 <label htmlFor="" className='text-white text-xl font-serif'>New User ? </label>
                 <button className=' text-xl ml-3 font-serif text-gray-500'><link rel="stylesheet" href="" />Create an Account</button>
             </div>

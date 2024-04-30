@@ -6,13 +6,13 @@ import LoginContainer from '../organism/LoginPage/LoginContainer'
 
 const LoginTemplate = () => {
     return (
-        <div className='grid grid-cols-2 bg-new-gray '>
-            <div className='flex desktop-or-laptop:w-full tablet-or-mobile:w-0'>
+        <div className='grid lg:grid-cols-2 grid-cols-1 bg-new-gray '>
+            <div className=' desktop-or-laptop:w-full tablet-or-mobile:w-0 lg:block hidden'>
                 <img src={Logo} alt="" className='absolute left-7 top-6 h-32  tablet-or-mobile:w-0' />
                 <img src={LoginImage} alt="" className='w-full h-screen ' />
             </div>
 
-            <div className="flex justify-center desktop-or-laptop:w-full tablet-or-mobile:w-full h-screen">
+            <div className="flex justify-center desktop-or-laptop:w-full tablet-or-mobile:p-6 h-screen">
                 <LoginContainer/>
             </div>
         </div>
