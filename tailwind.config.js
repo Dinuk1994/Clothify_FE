@@ -17,6 +17,8 @@ export default {
         'btn-color': '#6BB287',
         'header-color': '#6BB287',
         'second-header': '#AFDFE6',
+        'topics' : "#D7CF86",
+        
 
       },
       fontFamily: {
@@ -33,7 +35,8 @@ export default {
         'retina': { 'raw': '(min-resolution: 2dppx)' },
       },
       colors: {
-        'header-btn': '#BB5C5C'
+        'header-btn': '#BB5C5C',
+        'topic-name' : "#755CBB"
       }
     },
   },

@@ -3,7 +3,8 @@ import Header from '../molecules/Header'
 import CartIcon from '../../../public/Home/icons8-cart-100.png'
 import Carosoul from '../atoms/Carosoul'
 import Logo from '../../../public/common/CLOTHIFI-removebg-preview.png'
-
+import CardElement from '../atoms/Card'
+import SampleImage from '../../../public/Home/Sample2.jpg'
 
 const HomeTemplate = () => {
     return (
@@ -32,9 +33,30 @@ const HomeTemplate = () => {
                     <label htmlFor="" className='right-12 mt-8 text-purple-500 font-bold tablet-or-mobile:mt-3 tablet-or-mobile:text-xs'>0</label>
                 </div>
             </div>
-            <div className='mt-8 ml-8 mr-8 pb-8'>
+            <div className='mt-8 ml-8 mr-8 pb-6'>
                 <img src={Logo} alt="" className='absolute z-10 w-40 left-8 tablet-or-mobile:w-20' />
                 <Carosoul/>
+            </div>
+            <div className='mt-2 bg-topics'>
+                <label htmlFor="" className='text-topic-name text-2xl ml-12 font-serif font-semibold tablet-or-mobile:text-lg'>Best Sellings</label>
+            </div>
+            <div className='flex mt-5 mr-5 ml-8 grid-cols-5'>
+                <div className='w-1/5'>
+                    <CardElement description='Dress number 1001' price='2500.00' image={SampleImage}/>
+                </div>
+                <div className='w-1/5'>
+                    <CardElement description='Dress number 1001' price='2500.00 ' image={SampleImage}/>
+                </div>
+                <div className='w-1/5'>
+                    <CardElement description='Dress number 1001' price='2500.00 ' image={SampleImage}/>
+                </div>
+                <div className='w-1/5'>
+                    <CardElement description='Dress number 1001' price='2500.00 'image={SampleImage}/>
+                </div>
+                <div className='w-1/5'>
+                    <CardElement description='Dress number 1001' price='2500.00 'image={SampleImage}/>
+                </div>
+                
             </div>
         </div>
     )

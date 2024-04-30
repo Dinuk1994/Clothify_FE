@@ -7,7 +7,7 @@ import Image5 from '../../../public/Home/Image5.jpg'
 
 export function Carosoul() {
   return (
-    <div className="h-[250px] sm:h-[250px] xl:h-[350px] 2xl:h-[450px]">
+    <div className="h-[250px] sm:h-[250px] rounded-3xl xl:h-[350px] 2xl:h-[450px]">
       <Carousel>
         <img src={Image1} alt="..." className="mt-20 tablet-or-mobile:mt-0" />
         <img src={Image2} alt="..." className="tablet-or-mobile:h-64" />
