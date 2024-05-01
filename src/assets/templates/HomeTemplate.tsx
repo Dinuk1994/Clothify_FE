@@ -3,8 +3,11 @@ import Header from '../molecules/Header'
 import CartIcon from '../../../public/Home/icons8-cart-100.png'
 import Carosoul from '../atoms/Carosoul'
 import Logo from '../../../public/common/CLOTHIFI-removebg-preview.png'
-import CardElement from '../atoms/Card'
-import SampleImage from '../../../public/Home/Sample2.jpg'
+import CardContainer from '../organism/CardContainer'
+import SampleImage2 from '../../../public/Home/Sample2.jpg'
+import SampleImage3 from '../../../public/Home/Sample3.jpg'
+import FooterElement from '../molecules/Footer'
+
 
 const HomeTemplate = () => {
     return (
@@ -40,24 +43,19 @@ const HomeTemplate = () => {
             <div className='mt-2 bg-topics'>
                 <label htmlFor="" className='text-topic-name text-2xl ml-12 font-serif font-semibold tablet-or-mobile:text-lg'>Best Sellings</label>
             </div>
-            <div className='flex mt-5 mr-5 ml-8 grid-cols-5'>
-                <div className='w-1/5'>
-                    <CardElement description='Dress number 1001' price='2500.00' image={SampleImage}/>
-                </div>
-                <div className='w-1/5'>
-                    <CardElement description='Dress number 1001' price='2500.00 ' image={SampleImage}/>
-                </div>
-                <div className='w-1/5'>
-                    <CardElement description='Dress number 1001' price='2500.00 ' image={SampleImage}/>
-                </div>
-                <div className='w-1/5'>
-                    <CardElement description='Dress number 1001' price='2500.00 'image={SampleImage}/>
-                </div>
-                <div className='w-1/5'>
-                    <CardElement description='Dress number 1001' price='2500.00 'image={SampleImage}/>
-                </div>
-                
+            <div>
+                <CardContainer desc='Dress code 1001' amount={"2500.00"} photo={SampleImage2}/>
             </div>
+            <div className='mt-2 bg-topics'>
+                <label htmlFor="" className='text-topic-name text-2xl ml-12 font-serif font-semibold tablet-or-mobile:text-lg'>Most popular search</label>
+            </div>
+            <div>
+                <CardContainer desc='Shirt code 1002' amount={"2000.00"} photo={SampleImage3}/>
+            </div>
+            <div className='mt-6'>
+                <FooterElement/>
+            </div>
+            
         </div>
     )
 }
