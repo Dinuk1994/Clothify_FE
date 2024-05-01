@@ -79,7 +79,7 @@ const ShippingElement = () => {
                 </div>
             </div>
             <div className='flex justify-center'>
-                <button className='bg-confirm-btn w-32 rounded-lg mt-4 font-serif text-white p-1 text-xl mb-4 hover:bg-blue-900'>Proceed</button>
+                <button className='bg-confirm-btn w-32 rounded-lg mt-4 font-serif text-white p-1 text-xl mb-4 hover:bg-blue-900'>Pay</button>
             </div>
         </div>
     )

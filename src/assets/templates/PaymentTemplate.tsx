@@ -9,13 +9,12 @@ const PaymentTemplate = () => {
             <div className='flex justify-center '>
                 <div className='flex flex-col'>
                     <div className='flex justify-center'>
-                        <img src={Logo} alt="" className='w-44' />
+                        <img src={Logo} alt="" className='w-44 tablet-or-mobile:w-16' />
                     </div>
                     <div>
                         <PaymentContainer />
                     </div>
                 </div>
-
             </div>
             <div className='mt-8'>
                 <FooterElement />
