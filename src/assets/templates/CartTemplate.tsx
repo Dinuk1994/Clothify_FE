@@ -27,7 +27,7 @@ const CartTemplate = () => {
                     <ShippingContainer/>
                 </div>
                 <div className='mt-80 tablet-or-mobile:mt-2 flex justify-center'>
-                    <img src={CartImage} alt="" className='tablet-or-mobile:size-52' />
+                    <img src={CartImage} alt="" className='tablet-or-mobile:size-52 hover:animate-spin' />
                 </div>
             </div>
             <div className='mt-8'>
