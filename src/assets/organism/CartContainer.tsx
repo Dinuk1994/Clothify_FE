@@ -17,10 +17,10 @@ const CartContainer = () => {
             <div className='flex justify-center'>
                 <div className='flex flex-col'>
                     <div>
-                        <CartItem itemName='Men T shirt ' itemNumber='1001' qty='2' price='2500.00' image={SampleImage} />
-                        <CartItem itemName='Men T shirt ' itemNumber='1001' qty='2' price='2500.00' image={SampleImage} />
-                        <CartItem itemName='Men T shirt ' itemNumber='1001' qty='2' price='2500.00' image={SampleImage} />
-                        <CartItem itemName='Men T shirt ' itemNumber='1001' qty='2' price='2500.00' image={SampleImage} />
+                        <CartItem itemName='Men T shirt ' itemNumber='1001' qty={0} price='2500.00' image={SampleImage} />
+                        <CartItem itemName='Men T shirt ' itemNumber='1001' qty={0} price='2500.00' image={SampleImage} />
+                        <CartItem itemName='Men T shirt ' itemNumber='1001' qty={0}  price='2500.00' image={SampleImage} />
+                        <CartItem itemName='Men T shirt ' itemNumber='1001' qty={0}  price='2500.00' image={SampleImage} />
                     </div>
                     <div className='flex justify-center'>
                         <button className='bg-confirm-btn w-32 rounded-lg mt-2 font-serif text-white p-1 text-xl mb-4 hover:bg-blue-900'>Confirm</button>
