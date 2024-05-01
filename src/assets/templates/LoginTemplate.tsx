@@ -8,7 +8,7 @@ const LoginTemplate = () => {
     return (
         <div className='grid lg:grid-cols-2 grid-cols-1 bg-new-gray '>
             <div className=' desktop-or-laptop:w-4/5 tablet-or-mobile:w-0 lg:block hidden'>
-                <img src={Logo} alt="" className='absolute left-7 top-6 h-32  tablet-or-mobile:w-0' />
+                <img src={Logo} alt="" className='absolute left-7 top-6 h-32 tablet-or-mobile:w-0' />
                 <img src={LoginImage} alt="" className='w-full h-screen ' />
             </div>
 

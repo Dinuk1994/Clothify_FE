@@ -1,8 +1,9 @@
 import React from 'react'
+import CartTemplate from '../../templates/CartTemplate'
 
 const page = () => {
   return (
-    <div>page</div>
+    <div><CartTemplate/></div>
   )
 }
 
