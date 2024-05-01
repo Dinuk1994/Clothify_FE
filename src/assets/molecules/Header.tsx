@@ -2,8 +2,17 @@ import React from 'react'
 import '../../index.css'
 import Logo from '../../../public/common/CLOTHIFI-removebg-preview.png'
 import UserIcon from '../../../public/Home/icons8-user-100 (1).png'
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+    const navigate = useNavigate();
+
+    const navigateLogin = () =>{
+        navigate("/login")
+    }
+    const navigateRegister=()=>{
+        navigate("/register")
+    }
     return (
         <div className='flex grid-cols-3'>
             <div className='w-1/3 tablet-or-mobile:w-20'>
@@ -20,8 +29,8 @@ const Header = () => {
                         <label htmlFor="" className='px-2 mt-2 mr-2 tablet-or-mobile:text-xs font-bold text-purple-500 tablet-or-mobile:mt-1'>Username</label>
                     </div>
                     <div className='flex justify-center  w-1/2'>
-                        <button className='px-2 text-white tablet-or-mobile:text-xs font-bold mb-1 hover:text-orange-300'>Login</button>
-                        <button className='px-2 text-white tablet-or-mobile:text-xs font-bold mb-1 mr-5 hover:text-orange-300'>Register</button>
+                        <button className='px-2 text-white tablet-or-mobile:text-xs font-bold mb-1 hover:text-orange-300'onClick={navigateLogin} >Login</button>
+                        <button className='px-2 text-white tablet-or-mobile:text-xs font-bold mb-1 mr-5 hover:text-orange-300' onClick={navigateRegister}>Register</button>
                     </div>
                 </div>
             </div>

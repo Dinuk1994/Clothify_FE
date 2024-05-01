@@ -13,7 +13,7 @@ const PaymentContainer = () => {
                     <PaymentElement />
                 </div>
                 <div>
-                    <img src={PaymentImage} alt="" className='hover:animate-pulse' />
+                    <img src={PaymentImage} alt="" className='hover:animate-pulse tablet-or-mobile:hidden' />
                 </div>
             </div>
 

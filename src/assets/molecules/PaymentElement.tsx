@@ -13,7 +13,7 @@ const PaymentElement = () => {
         <div className='ml-12 mt-8 tablet-or-mobile:ml-3'>
             <div>
                 <div className='flex'>
-                    <label htmlFor="" className='font-serif text-white text-xl tablet-or-mobile:text-sm'>Choose your payment method</label>
+                    <label htmlFor="" className='font-serif text-white text-xl tablet-or-mobile:text-sm text-nowrap'>Choose your payment method</label>
                     <div className='flex flex-col'>
                         <img src={VisaImage} alt="" className='-mt-2 size-14 ml-10 tablet-or-mobile:size-8' />
                         <div className='-mt-1 ml-14 tablet-or-mobile:ml-12'>

@@ -3,8 +3,15 @@ import '../../index.css'
 import Logo from '../../../public/common/CLOTHIFI-removebg-preview.png'
 import Regbtn from '../molecules/registerBtn'
 import GoogleImage from '../../../public/Login/icons8-google-144.png'
+import { useNavigate } from 'react-router-dom'
 
 const LoginContainer = () => {
+    const navigate = useNavigate();
+
+    const navigateRegister=()=>{
+        navigate("/register")
+    }
+
     return (
         <div className='p-4'>
             <div className='mt-3 flex justify-center h-28 '>
@@ -57,7 +64,7 @@ const LoginContainer = () => {
             </div>
             <div className='flex justify-center mt-5'>
                 <label htmlFor="" className='text-white text-xl font-serif'>New User ? </label>
-                <button className=' text-xl ml-3 font-serif text-gray-500'><link rel="stylesheet" href="" />Create an Account</button>
+                <button className=' text-xl ml-3 font-serif text-gray-500' onClick={navigateRegister}>Create an Account</button>
             </div>
         </div>
     )
