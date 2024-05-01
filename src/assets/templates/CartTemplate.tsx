@@ -1,6 +1,8 @@
 import React from 'react'
 import Logo from '../../../public/common/CLOTHIFI-removebg-preview.png'
 import CartContainer from '../organism/CartContainer'
+import FooterElement from '../molecules/Footer'
+import ShippingContainer from '../organism/ShippingContainer'
 
 const CartTemplate = () => {
     return (
@@ -16,10 +18,16 @@ const CartTemplate = () => {
                     </div>
                 </div>
             </div>
-            <div className='flex grid-cols-2'>
+            <div className='flex grid-cols-2 tablet-or-mobile:grid-cols-1 tablet-or-mobile:flex-col'>
                 <div>
                     <CartContainer/>
                 </div>
+                <div>
+                    <ShippingContainer/>
+                </div>
+            </div>
+            <div className='mt-8'>
+                <FooterElement/>
             </div>
 
         </div>

@@ -18,7 +18,7 @@ export default {
         'header-color': '#6BB287',
         'second-header': '#AFDFE6',
         'topics' : "#D7CF86",
-        
+        'confirm-btn' : '#6175A7'
 
       },
       fontFamily: {
