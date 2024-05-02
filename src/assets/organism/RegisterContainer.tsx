@@ -51,13 +51,13 @@ const RegisterContainer = () => {
         repeatPassword: ''
     });
 
-    
+
 
 
     function handleSubmit(event: any) {
         event.preventDefault();
 
-        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-zA-Z]{2,}$/;
+        const emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
 
         const validationErrors: ValidationErrors = {}
         if (!post.fullName.trim()) {
@@ -86,11 +86,9 @@ const RegisterContainer = () => {
         setErrors(validationErrors);
 
         if (Object.keys(validationErrors).length === 0) {
-            alert("User registered successfully");
-    
             axios.post('http://localhost:8080/register/add', post)
                 .then(response => {
-                    console.log(response);
+                    console.log(response.data); 
                     setPost({
                         fullName: '',
                         userName: '',
@@ -98,8 +96,15 @@ const RegisterContainer = () => {
                         password: '',
                         repeatPassword: ''
                     });
+                    alert("User registered successfully");
                 })
-                .catch(err => console.log(err));
+                .catch(err => {
+                    console.log(err);
+                    if (err.response && err.response.status === 400 && err.response.data === "Can't register user already exists") {
+                        alert("User already exists. Please use a different email.");
+                    }
+                });
+
         }
     }
 
