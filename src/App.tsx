@@ -7,6 +7,7 @@ import Register from './assets/(pages)/register/page'
 import Home from './assets/(pages)/home/page'
 import Cart from './assets/(pages)/cart/page'
 import Payment from './assets/(pages)/payment/page'
+import Admin from './assets/(pages)/admin/page'
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route path='/home' element={<Home/>}/>
         <Route path='/cart' element={<Cart/>}/>
         <Route path='/payment' element={<Payment/>}/>
+        <Route path='/admin' element={<Admin/>}/>
       </Routes>
     </Router>
   );
