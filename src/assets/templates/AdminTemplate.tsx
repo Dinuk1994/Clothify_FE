@@ -7,11 +7,11 @@ const AdminTemplate = () => {
         <div className='bg-new-gray'>
             <div className='flex grid-cols-2'>
                 <div className='w-5/6 flex justify-start'>
-                    <img src={Logo} alt="" className='w-44 tablet-or-mobile:w-16' />
+                    <img src={Logo} alt="" className='w-44 tablet-or-mobile:size-24' />
                 </div>
                 <div className='mt-12 w-1/6 flex justify-end mr-14 mb-5'>
                     <div className='bg-white  flex justify-center p-2 rounded-xl shadow-lg shado'>
-                        <label htmlFor="" className='font-serif text-xl font-bold text-gray-500'>Administration Only</label>
+                        <label htmlFor="" className='font-serif text-xl font-bold text-gray-500 tablet-or-mobile:text-md'>Administration Only</label>
                     </div>
                 </div>
             </div>
