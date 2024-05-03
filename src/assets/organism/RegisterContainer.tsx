@@ -7,13 +7,14 @@ import GoogleImage from '../../../public/Login/icons8-google-144.png'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { useForm } from "react-hook-form";
+import Swal from 'sweetalert2'
 
 const RegisterContainer = () => {
 
     const navigate = useNavigate();
 
-    const navigateToHome = () => {
-        navigate("/home")
+    const navigateToLogin = () => {
+        navigate("/login")
     }
 
     const {
@@ -39,9 +40,14 @@ const RegisterContainer = () => {
         axios.post('http://localhost:8080/register/add', data)
             .then(response => {
                 console.log(response.data);
-
-                alert("User registered successfully");
-                navigateToHome();
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "User Register Success!",
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+                navigateToLogin();
 
             })
             .catch(err => {
@@ -82,9 +88,7 @@ const RegisterContainer = () => {
                                 })}
                             />
                             <p className='text-red-500 font-serif text-xs flex justify-end mt-1'>{errors.fullName?.message}</p>
-                            <label
-                                className="after:content[''] pointer-events-none absolute left-0  -top-1.5 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all after:absolute after:-bottom-1.5 after:block after:w-full after:scale-x-0 after:border-b-2 after:border-gray-500 after:transition-transform after:duration-300 peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.25] peer-placeholder-shown:text-blue-gray-500 peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:after:scale-x-100 peer-focus:after:border-gray-900 peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
-                            </label>
+                           
                         </div>
                     </div>
                     <div className='mt-5'>
@@ -101,10 +105,7 @@ const RegisterContainer = () => {
                                 })}
                             />
                             <p className='text-red-500 font-serif text-xs flex justify-end mt-1'>{errors.userName?.message}</p>
-                            <label
-                                className="after:content[''] pointer-events-none absolute left-0  -top-1.5 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all after:absolute after:-bottom-1.5 after:block after:w-full after:scale-x-0 after:border-b-2 after:border-gray-500 after:transition-transform after:duration-300 peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.25] peer-placeholder-shown:text-blue-gray-500 peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:after:scale-x-100 peer-focus:after:border-gray-900 peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
-
-                            </label>
+                            
                         </div>
                     </div>
                     <div className='mt-5'>
@@ -122,10 +123,7 @@ const RegisterContainer = () => {
                                 })}
                             />
                             <p className='text-red-500 font-serif text-xs flex justify-end mt-1'>{errors.email?.message}</p>
-                            <label
-                                className="after:content[''] pointer-events-none absolute left-0  -top-1.5 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all after:absolute after:-bottom-1.5 after:block after:w-full after:scale-x-0 after:border-b-2 after:border-gray-500 after:transition-transform after:duration-300 peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.25] peer-placeholder-shown:text-blue-gray-500 peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:after:scale-x-100 peer-focus:after:border-gray-900 peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
-
-                            </label>
+                           
                         </div>
                     </div>
                     <div className='mt-5'>
@@ -142,10 +140,7 @@ const RegisterContainer = () => {
                                 })}
                             />
                             <p className='text-red-500 font-serif text-xs flex justify-end mt-1'>{errors.password?.message}</p>
-                            <label
-                                className="after:content[''] pointer-events-none absolute left-0  -top-1.5 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all after:absolute after:-bottom-1.5 after:block after:w-full after:scale-x-0 after:border-b-2 after:border-gray-500 after:transition-transform after:duration-300 peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.25] peer-placeholder-shown:text-blue-gray-500 peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:after:scale-x-100 peer-focus:after:border-gray-900 peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
-
-                            </label>
+                           
                         </div>
                     </div>
                     <div className='mt-5'>
@@ -160,10 +155,7 @@ const RegisterContainer = () => {
                                 })}
                             />
                             <p className='text-red-500 font-serif text-xs flex justify-end mt-1'>{errors.repeatPassword && errors.repeatPassword.message}</p>
-                            <label
-                                className="after:content[''] pointer-events-none absolute left-0  -top-1.5 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all after:absolute after:-bottom-1.5 after:block after:w-full after:scale-x-0 after:border-b-2 after:border-gray-500 after:transition-transform after:duration-300 peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.25] peer-placeholder-shown:text-blue-gray-500 peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:after:scale-x-100 peer-focus:after:border-gray-900 peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
-
-                            </label>
+                           
                         </div>
                     </div>
                     <div className='mt-4 flex justify-center'>
