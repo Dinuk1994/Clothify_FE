@@ -5,112 +5,81 @@ import Logo from '../../../public/common/CLOTHIFI-removebg-preview.png'
 import Regbtn from '../molecules/registerBtn'
 import GoogleImage from '../../../public/Login/icons8-google-144.png'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
+import { useForm } from "react-hook-form";
 
 const RegisterContainer = () => {
 
-    interface RegData {
-        fullName: string;
-        userName: string;
-        email: string;
-        password: string;
-        repeatPassword: string;
+    const navigate = useNavigate();
+
+    const navigateToHome = () => {
+        navigate("/home")
     }
 
-    interface ValidationErrors {
-        fullName?: string;
-        userName?: string;
-        email?: string;
-        password?: string;
-        repeatPassword?: string;
-    }
+    const {
+        register,
+        handleSubmit,
+        watch,
+        formState: { errors }
 
-
-
-    const [post, setPost] = useState<RegData>({
-        fullName: '',
-        userName: '',
-        email: '',
-        password: '',
-        repeatPassword: ''
-    });
-
-    const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = event.target;
-        setPost(prevState => ({
-            ...prevState,
-            [name]: value
-        }));
-    }
-
-
-    const [errors, setErrors] = useState<ValidationErrors>({
-        fullName: '',
-        userName: '',
-        email: '',
-        password: '',
-        repeatPassword: ''
+    } = useForm({
+        defaultValues: {
+            fullName: "",
+            userName: "",
+            email: "",
+            password: "",
+            repeatPassword: ""
+        }
     });
 
 
+    const submitForm = (data: any) => {
+        console.log(data);
+
+        axios.post('http://localhost:8080/register/add', data)
+            .then(response => {
+                console.log(response.data);
+
+                alert("User registered successfully");
+                navigateToHome();
+
+            })
+            .catch(err => {
+                console.log(err);
+                if (err.response && err.response.status === 400 && err.response.data === "Can't register user already exists") {
+                    alert("User already exists. Please use a different email.");
+                }
+            });
+
+    }
+
+    const password = watch("password")
 
 
-    function handleSubmit(event: any) {
-        event.preventDefault();
+    const loginSuccess = () => {
+        Command: toastr["success"]("Inconceivable!")
 
-        const emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
-
-        const validationErrors: ValidationErrors = {}
-        if (!post.fullName.trim()) {
-            validationErrors.fullName = "full name is required"
-        }
-        if (!post.userName.trim()) {
-            validationErrors.userName = "username is required"
-        }
-
-        if (!post.email.trim()) {
-            validationErrors.email = "email is reqired"
-        } else if (!emailRegex.test(post.email)) {
-            validationErrors.email = "email is not valid"
-        }
-
-        if (!post.password.trim()) {
-            validationErrors.password = "password is reqired"
-        } else if (post.password.length < 8) {
-            validationErrors.password = "password should be at least 8 charactors"
-        }
-
-        if (post.repeatPassword !== post.password) {
-            validationErrors.repeatPassword = "password not matched"
-        }
-
-        setErrors(validationErrors);
-
-        if (Object.keys(validationErrors).length === 0) {
-            axios.post('http://localhost:8080/register/add', post)
-                .then(response => {
-                    console.log(response.data); 
-                    setPost({
-                        fullName: '',
-                        userName: '',
-                        email: '',
-                        password: '',
-                        repeatPassword: ''
-                    });
-                    alert("User registered successfully");
-                })
-                .catch(err => {
-                    console.log(err);
-                    if (err.response && err.response.status === 400 && err.response.data === "Can't register user already exists") {
-                        alert("User already exists. Please use a different email.");
-                    }
-                });
-
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": false,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
         }
     }
 
     return (
         <div>
-            <form onSubmit={handleSubmit} action="">
+            <form action="" noValidate>
                 <div className='mt-3 flex justify-center h-28 '>
                     <button><img src={Logo} alt="" className='w-48' /></button>
                 </div>
@@ -123,12 +92,19 @@ const RegisterContainer = () => {
                     </div>
                     <div>
                         <div className="relative h-8 w-full min-w-[200px]">
-                            <input placeholder="" onChange={handleInput} name='fullName' value={post.fullName}
-                                className="peer h-full w-full text-lg border-b border-blue-gray-200 text-white bg-transparent font-sans  font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border-blue-gray-200 focus:border-gray-500 focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50 placeholder:opacity-0 focus:placeholder:opacity-100" />
-                            {errors.fullName && <span className='text-red-500 text-xs'>{errors.fullName}</span>}
+                            <input type="text" id="full_name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="John Cena"
+                                {...register("fullName", {
+                                    required: {
+                                        value: true,
+                                        message: "Full Name is requires*"
+
+                                    },
+
+                                })}
+                            />
+                            <p className='text-red-500 font-serif text-xs flex justify-end mt-1'>{errors.fullName?.message}</p>
                             <label
                                 className="after:content[''] pointer-events-none absolute left-0  -top-1.5 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all after:absolute after:-bottom-1.5 after:block after:w-full after:scale-x-0 after:border-b-2 after:border-gray-500 after:transition-transform after:duration-300 peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.25] peer-placeholder-shown:text-blue-gray-500 peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:after:scale-x-100 peer-focus:after:border-gray-900 peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
-
                             </label>
                         </div>
                     </div>
@@ -137,9 +113,15 @@ const RegisterContainer = () => {
                     </div>
                     <div>
                         <div className="relative h-8 w-full min-w-[200px]">
-                            <input placeholder="" onChange={handleInput} name='userName' value={post.userName}
-                                className="peer h-full w-full text-lg border-b border-blue-gray-200 text-white bg-transparent font-sans  font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border-blue-gray-200 focus:border-gray-500 focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50 placeholder:opacity-0 focus:placeholder:opacity-100" />
-                            {errors.userName && <span className='text-red-500 text-xs'>{errors.userName}</span>}
+                            <input type="text" id="username" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="John" required
+                                {...register("userName", {
+                                    required: {
+                                        value: true,
+                                        message: "Username is required*"
+                                    }
+                                })}
+                            />
+                            <p className='text-red-500 font-serif text-xs flex justify-end mt-1'>{errors.userName?.message}</p>
                             <label
                                 className="after:content[''] pointer-events-none absolute left-0  -top-1.5 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all after:absolute after:-bottom-1.5 after:block after:w-full after:scale-x-0 after:border-b-2 after:border-gray-500 after:transition-transform after:duration-300 peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.25] peer-placeholder-shown:text-blue-gray-500 peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:after:scale-x-100 peer-focus:after:border-gray-900 peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
 
@@ -151,10 +133,16 @@ const RegisterContainer = () => {
                     </div>
                     <div>
                         <div className="relative h-8 w-full min-w-[200px]">
-                            <input placeholder="" onChange={handleInput} name='email' value={post.email}
-                                className="peer h-full w-full text-lg border-b border-blue-gray-200 text-white bg-transparent font-sans  font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border-blue-gray-200 focus:border-gray-500 focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50 placeholder:opacity-0 focus:placeholder:opacity-100" />
-                            {errors.email && <span className='text-red-500 text-xs'>{errors.email}</span>}
-
+                            <input type="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="john.doe@company.com" required
+                                {...register("email", {
+                                    pattern: { value: /^[\w-\\.]+@([\w-]+\.)+[\w-]{2,4}$/, message: "Please enter valid email" },
+                                    required: {
+                                        value: true,
+                                        message: "Email is required"
+                                    }
+                                })}
+                            />
+                            <p className='text-red-500 font-serif text-xs flex justify-end mt-1'>{errors.email?.message}</p>
                             <label
                                 className="after:content[''] pointer-events-none absolute left-0  -top-1.5 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all after:absolute after:-bottom-1.5 after:block after:w-full after:scale-x-0 after:border-b-2 after:border-gray-500 after:transition-transform after:duration-300 peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.25] peer-placeholder-shown:text-blue-gray-500 peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:after:scale-x-100 peer-focus:after:border-gray-900 peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
 
@@ -166,9 +154,15 @@ const RegisterContainer = () => {
                     </div>
                     <div>
                         <div className="relative h-8 w-full max-w-[420px]">
-                            <input type='password' placeholder="" onChange={handleInput} name='password' value={post.password}
-                                className="peer h-full w-full text-lg border-b border-blue-gray-200 text-white bg-transparent font-sans  font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border-blue-gray-200 focus:border-gray-500 focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50 placeholder:opacity-0 focus:placeholder:opacity-100" />
-                            {errors.password && <span className='text-red-500 text-xs'>{errors.password}</span>}
+                            <input type="password" id="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="•••••••••" required
+                                {...register('password', {
+                                    pattern: {
+                                        value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*#?&]{8,}$/,
+                                        message: "Password cannot be accepted "
+                                    }
+                                })}
+                            />
+                            <p className='text-red-500 font-serif text-xs flex justify-end mt-1'>{errors.password?.message}</p>
                             <label
                                 className="after:content[''] pointer-events-none absolute left-0  -top-1.5 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all after:absolute after:-bottom-1.5 after:block after:w-full after:scale-x-0 after:border-b-2 after:border-gray-500 after:transition-transform after:duration-300 peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.25] peer-placeholder-shown:text-blue-gray-500 peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:after:scale-x-100 peer-focus:after:border-gray-900 peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
 
@@ -180,9 +174,13 @@ const RegisterContainer = () => {
                     </div>
                     <div>
                         <div className="relative h-8 w-full max-w-[420px]">
-                            <input type='password' placeholder="" onChange={handleInput} name='repeatPassword' value={post.repeatPassword}
-                                className="peer h-full w-full text-lg border-b border-blue-gray-200 text-white bg-transparent font-sans  font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border-blue-gray-200 focus:border-gray-500 focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50 placeholder:opacity-0 focus:placeholder:opacity-100" />
-                            {errors.repeatPassword && <span className='text-red-500 text-xs'>{errors.repeatPassword}</span>}
+                            <input type="password" id="confirm_password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="•••••••••" required
+                                {...register('repeatPassword', {
+                                    validate: value =>
+                                        value === password || "Passwords do not match"
+                                })}
+                            />
+                            <p className='text-red-500 font-serif text-xs flex justify-end mt-1'>{errors.repeatPassword && errors.repeatPassword.message}</p>
                             <label
                                 className="after:content[''] pointer-events-none absolute left-0  -top-1.5 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all after:absolute after:-bottom-1.5 after:block after:w-full after:scale-x-0 after:border-b-2 after:border-gray-500 after:transition-transform after:duration-300 peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.25] peer-placeholder-shown:text-blue-gray-500 peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:after:scale-x-100 peer-focus:after:border-gray-900 peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
 
@@ -190,7 +188,7 @@ const RegisterContainer = () => {
                         </div>
                     </div>
                     <div className='mt-4 flex justify-center'>
-                        <Regbtn name='Register' />
+                        <Regbtn click={handleSubmit(submitForm)} name='Register' />
                     </div>
                     <div className='mt-3 text-white justify-items-center text-md flex justify-center'>
                         <hr className="w-44" /> OR <hr className="w-44" />

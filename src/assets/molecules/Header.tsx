@@ -9,6 +9,7 @@ const Header = () => {
 
     const navigateLogin = () =>{
         navigate("/login")
+        
     }
     const navigateRegister=()=>{
         navigate("/register")
