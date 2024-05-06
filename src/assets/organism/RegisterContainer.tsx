@@ -53,7 +53,13 @@ const RegisterContainer = () => {
             .catch(err => {
                 console.log(err);
                 if (err.response && err.response.status === 400 && err.response.data === "Can't register user already exists") {
-                    alert("User already exists. Please use a different email.");
+                    Swal.fire({
+                        position: "center",
+                        icon: "error",
+                        title: "Login Failed!",
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
                 }
             });
 
