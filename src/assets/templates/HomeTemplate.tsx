@@ -10,11 +10,14 @@ import FooterElement from '../molecules/Footer'
 
 const HomeTemplate = () => {
     return (
-        <div className='bg-new-gray'>
+        <div className='bg-gray-900'>
             <div className='bg-header-color'>
                 <Header />
             </div>
             <div className='bg-second-header h-16 tablet-or-mobile:h-8 flex justify-items-center grid-cols-12 px-14 tablet-or-mobile:px-1'>
+                <div className='w-1/12 ml-8 tablet-or-mobile:ml-1'>
+                    <button className='font-serif text-xl  text-header-btn hover:text-orange-900 mt-4 tablet-or-mobile:mt-2 hover:font-semibold ml-5 tablet-or-mobile:text-xs '>Women</button>
+                </div>
                 <div className='w-1/12 ml-8 tablet-or-mobile:ml-1'>
                     <button className='font-serif text-xl  text-header-btn hover:text-orange-900 mt-4 tablet-or-mobile:mt-2 hover:font-semibold ml-5 tablet-or-mobile:text-xs '>Women</button>
                 </div>
@@ -37,24 +40,24 @@ const HomeTemplate = () => {
             </div>
             <div className='mt-8 ml-8 mr-8 pb-6'>
                 <img src={Logo} alt="" className='absolute z-10 w-40 left-8 tablet-or-mobile:w-20' />
-                <Carosoul/>
+                <Carosoul />
             </div>
             <div className='mt-2 bg-topics'>
                 <label htmlFor="" className='text-topic-name text-2xl ml-12 font-serif font-semibold tablet-or-mobile:text-lg'>Best Sellings</label>
             </div>
             <div>
-                <CardContainer desc='Dress code 1001' amount={"2500.00"} photo={SampleImage2}/>
+                <CardContainer desc='Dress code 1001' amount={"2500.00"} photo={SampleImage2} />
             </div>
             <div className='mt-2 bg-topics'>
                 <label htmlFor="" className='text-topic-name text-2xl ml-12 font-serif font-semibold tablet-or-mobile:text-lg'>Most popular search</label>
             </div>
             <div>
-                <CardContainer desc='Shirt code 1002' amount={"2000.00"} photo={SampleImage3}/>
+                <CardContainer desc='Shirt code 1002' amount={"2000.00"} photo={SampleImage3} />
             </div>
             <div className='mt-6'>
-                <FooterElement/>
+                <FooterElement />
             </div>
-            
+
         </div>
     )
 }

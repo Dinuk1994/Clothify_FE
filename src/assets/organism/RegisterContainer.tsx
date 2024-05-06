@@ -87,7 +87,7 @@ const RegisterContainer = () => {
                                 {...register("fullName", {
                                     required: {
                                         value: true,
-                                        message: "Full Name is requires*"
+                                        message: "Full Name is required*"
 
                                     },
 

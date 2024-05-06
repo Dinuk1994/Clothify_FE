@@ -44,7 +44,7 @@ const LoginContainer = () => {
                     Swal.fire({
                         position: "center",
                         icon: "success",
-                        title: "LOgin Success!",
+                        title: "Login Success!",
                         showConfirmButton: false,
                         timer: 1500
                     })
