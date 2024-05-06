@@ -145,10 +145,11 @@ const AdminContainer = () => {
                                 {...register("description", {
                                     required: {
                                         value: true,
-                                        message: ""
+                                        message: "Description is required!"
                                     }
                                 })}
                             />
+                             <p className='text-red-900 font-serif text-xs flex justify-end mt-1'>{errors.description?.message}</p>
                         </div>
                         <div className='flex mt-8'>
                             <label htmlFor="" className='ml-10 mt-1 text-xl font-serif font-bold '>Price</label>
@@ -156,16 +157,21 @@ const AdminContainer = () => {
                                 {...register("price", {
                                     required: {
                                         value: true,
-                                        message: ""
+                                        message: "Price required!"
                                     }
                                 })}
                             />
+                             <p className='text-red-900 font-serif text-xs flex justify-end mt-1'>{errors.code?.message}</p>
                         </div>
                         <div className='flex mt-8'>
                             <label htmlFor="" className='ml-10 mt-1 text-xl font-serif font-bold '>Image</label>
                             <input type="file" accept="image/*" className='rounded-lg bg-gray-200 ml-[115px] text-black'
-                                {...register("image")} onChange={handleFileChange}
+                                {...register("image",{required:{
+                                    value : true,
+                                    message : "Image is required!"
+                                }})} onChange={handleFileChange}
                             />
+                             <p className='text-red-900 font-serif text-xs flex justify-end mt-1'>{errors.image?.message}</p>
                         </div>
                         <div className='flex mt-8 mb-8'>
                             <label htmlFor="" className='ml-10 mt-1 text-xl font-serif font-bold '>Qty in stock</label>
@@ -173,10 +179,11 @@ const AdminContainer = () => {
                                 {...register("qtyInStock", {
                                     required: {
                                         value: true,
-                                        message: ""
+                                        message: "Qty is required!"
                                     }
                                 })}
                             />
+                             <p className='text-red-900 font-serif text-xs flex justify-end mt-1'>{errors.qtyInStock?.message}</p>
                         </div>
                         <div className='flex justify-center mb-10 '>
                             <RegBtn name='Add Item' click={handleSubmit(submitForm)} />
