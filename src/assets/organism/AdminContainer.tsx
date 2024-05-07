@@ -73,7 +73,7 @@ const AdminContainer = () => {
 
             });
     }
-    const updateItem = (data:any) => {
+    const updateItem = (data: any) => {
         const formData = new FormData();
         Object.keys(data).forEach((key) => {
             formData.append(key, data[key]);
@@ -84,18 +84,18 @@ const AdminContainer = () => {
         axios.post("http://localhost:8081/product/post", formData)
             .then(response => {
                 console.log("Response data : ", response.data);
-                if (response.data === "product added") {
+                if (response.data === "product updated") {
                     Swal.fire({
                         position: "center",
                         icon: "success",
-                        title: "Product added",
+                        title: "Product updated",
                         timer: 1500
                     })
                 } else {
                     Swal.fire({
                         position: "center",
                         icon: "error",
-                        title: "Product added failed",
+                        title: "Product updated failed",
                         timer: 1500
                     })
                 }
@@ -106,13 +106,40 @@ const AdminContainer = () => {
             });
     }
 
+    const deleteItem = () => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                try {
+                    const response = await axios.delete(`http://localhost:8081/product/deleteById/${id}`);
+                    if (response.data) {
+                        console.log(response.data);
+                        Swal.fire(
+                            'Deleted!',
+                            'Your file has been deleted.',
+                            'success'
+                        );
+                    }
+                } catch (error) {
+                    console.error('Error deleting item:', error);
+                }
+            }
+        });
+    };
+    
     const getItem = async () => {
         try {
             const response = await axios.get(`http://localhost:8081/product/getById/${id}`);
             if (response.data) {
                 setItemDeails(response.data);
-                console.log(response.data.image);
-                
+
                 setValue('category', response.data.category);
                 setValue('name', response.data.name);
                 setValue('code', response.data.code);
@@ -122,7 +149,7 @@ const AdminContainer = () => {
                 setValue('qtyInStock', response.data.qtyInStock);
             } else {
                 setItemDeails({});
-                setValue('category', 'men'); 
+                setValue('category', 'men');
                 setValue('name', '');
                 setValue('code', '');
                 setValue('description', '');
@@ -135,11 +162,16 @@ const AdminContainer = () => {
         }
     };
 
+   
+
     useEffect(() => {
         if (isChecked && id) {
             getItem();
         }
     }, [isChecked, id]);
+
+
+  
 
 
     return (
@@ -228,17 +260,18 @@ const AdminContainer = () => {
                                     }
                                 })}
                             />
-                            <p className='text-red-900 font-serif text-xs flex justify-end mt-1'>{errors.code?.message}</p>
+                            <p className='text-red-900 font-serif text-xs flex justify-end mt-1'>{errors.price?.message}</p>
                         </div>
                         <div className='flex mt-8'>
                             <label htmlFor="" className='ml-10 mt-1 text-xl font-serif font-bold '>Image</label>
                             <input type="file" accept="image/*" className='rounded-lg bg-gray-200 ml-[115px] text-black'
-                                {...register("image", {
-                                    required: {
-                                        value: true,
-                                        message: "Image is required!"
-                                    }
-                                })} onChange={handleFileChange}
+                                // {...register("image", {
+                                //     required: {
+                                //         value: true,
+                                //         message: "Image is required!"
+                                //     }
+                                // })} 
+                                onChange={handleFileChange}
                             />
                             <p className='text-red-900 font-serif text-xs flex justify-end mt-1'>{errors.image?.message}</p>
                         </div>
@@ -259,7 +292,7 @@ const AdminContainer = () => {
                                 <label htmlFor="" className='ml-10 mt-1 text-xl font-serif font-bold '>Item ID</label>
                                 <input
                                     type="number"
-                                    value={id||''}
+                                    value={id || ''}
                                     className='rounded-lg bg-gray-200 ml-[100px] text-black w-40'
                                     disabled={!isChecked}
                                     {...register("id")}
@@ -274,7 +307,7 @@ const AdminContainer = () => {
                                     checked={isChecked}
                                     onChange={() => setIsCkecked(!isChecked)}
                                 />
-                                <label className='mt-2 ml-2 text-red-700' htmlFor="">If you want to UPDATE the item please enter the item ID number*</label>
+                                <label className='mt-2 ml-2 text-red-700' htmlFor="">If you want to UPDATE/DELETE the item please enter the item ID number*</label>
                             </div>
                         </div>
                         <div className='flex grid-cols-2 justify-center mb-10 '>
@@ -282,9 +315,11 @@ const AdminContainer = () => {
 
                             </div>
                             <div className='flex justify-between '>
+                                <div className='ml-10' ><RegBtn name='Delete item' makeDissable={!isChecked} className='rounded-3xl shadow-2xl w-40  text-xl border-4 border-gray-300 font-serif text-white bg-red-600 p-1 hover:bg-red-800' click={handleSubmit(deleteItem)}  /></div>
 
-                                <div> <RegBtn name='Update item' makeDissable={!isChecked} click={handleSubmit(updateItem)} /></div>
-                                <div className='ml-10' ><RegBtn name='Add Item' makeDissable={isChecked} click={handleSubmit(submitForm)} /></div>
+                                <div className='ml-10'> <RegBtn name='Update item' makeDissable={!isChecked} className='rounded-3xl shadow-2xl w-40  text-xl border-4 border-gray-300 font-serif text-white bg-btn-color p-1 hover:bg-emerald-600' click={handleSubmit(updateItem)} /></div>
+
+                                <div className='ml-10' ><RegBtn name='Add Item' makeDissable={isChecked} className='rounded-3xl shadow-2xl w-40  text-xl border-4 border-gray-300 font-serif text-white bg-btn-color p-1 hover:bg-emerald-600' click={handleSubmit(submitForm)} /></div>
                             </div>
                         </div>
 
