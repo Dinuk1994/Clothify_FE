@@ -317,7 +317,7 @@ const AdminContainer = () => {
                             <div className='flex justify-between '>
                                 <div className='ml-10' ><RegBtn name='Delete item' makeDissable={!isChecked} className='rounded-3xl shadow-2xl w-40  text-xl border-4 border-gray-300 font-serif text-white bg-red-600 p-1 hover:bg-red-800' click={handleSubmit(deleteItem)}  /></div>
 
-                                <div className='ml-10'> <RegBtn name='Update item' makeDissable={!isChecked} className='rounded-3xl shadow-2xl w-40  text-xl border-4 border-gray-300 font-serif text-white bg-btn-color p-1 hover:bg-emerald-600' click={handleSubmit(updateItem)} /></div>
+                                <div className='ml-10'> <RegBtn name='Update item' makeDissable={!isChecked} className='rounded-3xl shadow-2xl w-40  text-xl border-4 border-gray-300 font-serif text-white bg-blue-600 p-1 hover:bg-blue-800' click={handleSubmit(updateItem)} /></div>
 
                                 <div className='ml-10' ><RegBtn name='Add Item' makeDissable={isChecked} className='rounded-3xl shadow-2xl w-40  text-xl border-4 border-gray-300 font-serif text-white bg-btn-color p-1 hover:bg-emerald-600' click={handleSubmit(submitForm)} /></div>
                             </div>
