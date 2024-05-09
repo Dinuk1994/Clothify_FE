@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import RegBtn from '../molecules/registerBtn'
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import SampleImage from '../../../public/Login/Login.jpg'
+
 
 const AdminContainer = () => {
 
@@ -84,7 +84,7 @@ const AdminContainer = () => {
         axios.post("http://localhost:8081/product/post", formData)
             .then(response => {
                 console.log("Response data : ", response.data);
-                if (response.data === "product updated") {
+                if (response.data === "product added") {
                     Swal.fire({
                         position: "center",
                         icon: "success",
@@ -136,17 +136,22 @@ const AdminContainer = () => {
     
     const getItem = async () => {
         try {
-            const response = await axios.get(`http://localhost:8081/product/getById/${id}`);
-            if (response.data) {
-                setItemDeails(response.data);
-
-                setValue('category', response.data.category);
-                setValue('name', response.data.name);
-                setValue('code', response.data.code);
-                setValue('description', response.data.description);
-                setValue('price', response.data.price);
-                setValue('image', response.data.image);
-                setValue('qtyInStock', response.data.qtyInStock);
+            const response = await fetch(`http://localhost:8081/product/getById/${id}`);
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
+            if (data) {
+                setItemDeails(data);
+                console.log(data)
+    
+                setValue('category', data.category);
+                setValue('name', data.name);
+                setValue('code', data.code);
+                setValue('description', data.description);
+                setValue('price', data.price);
+                setValue('image', data.image);
+                setValue('qtyInStock', data.qtyInStock);
             } else {
                 setItemDeails({});
                 setValue('category', 'men');
@@ -161,7 +166,7 @@ const AdminContainer = () => {
             console.error('Error fetching item details:', error);
         }
     };
-
+    
    
 
     useEffect(() => {
